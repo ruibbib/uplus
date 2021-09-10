@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>LG U+ 웹팩스</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!--공통-->
+    <link rel="stylesheet" type="text/css" href="../../css/common.css">
+    <link rel="stylesheet" type="text/css" href="../../css/mfax.css">
+    
+</head>
+<body>
+    <div class="wrap">
+        <header class="wfmheader">
+            <div class="headerbar gray_bg">
+                <a href="#" class="close"><img src="../../img/icon/icon_close.png"></a>
+            </div>
+        </header>
+        <div class="container">
+            <div class="cont-wrap center">
+                <div class="cont-top login">
+                    <div class="titlearea">
+                     <h1 class="title black">간편로그인</h1>
+                    </div>
+
+                    <div class="login-number">
+                        <span class="chkbox">
+                            <input type="checkbox" class="styled" checked="" disabled="">
+                            <span class="chk pn-chk"></span>
+                        </span>
+                        <span class="chkbox">
+                            <input type="checkbox" class="styled" checked="" disabled="">
+                            <span class="chk pn-chk"></span>
+                        </span>
+                        <span class="chkbox">
+                            <input type="checkbox" class="styled" checked="" disabled="">
+                            <span class="chk"></span>
+                        </span>
+                        <span class="chkbox">
+                            <input type="checkbox" class="styled" checked="" disabled="">
+                            <span class="chk"></span>
+                        </span>
+                        <span class="chkbox">
+                            <input type="checkbox" class="styled" checked="" disabled="">
+                            <span class="chk"></span>
+                        </span>
+                        <span class="chkbox">
+                            <input type="checkbox" class="styled" checked="" disabled="">
+                            <span class="chk"></span>
+                        </span>
+                    </div>
+                    <div class="toggle-box">
+                        <p class="sub-txt">바이오인증 사용</p>
+                        <input type="checkbox" name="toggle" class="styletg" id="toggle">
+                    </div>
+                </div>
+
+                <div class="cont-mid">
+                    <table class="number-keypad" >
+                        <colgroup>
+                            <col width:33.3333%;>
+                            <col width:33.3333%;>
+                            <col width:33.3333%;>
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th>9</th>
+                                <th>7</th>
+                                <th>4</th>
+                            </tr>
+                            <tr>
+                                <th>6</th>
+                                <th>3</th>
+                                <th>0</th>
+                            </tr>
+                            <tr>
+                                <th>5</th>
+                                <th>1</th>
+                                <th>8</th>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th>2</th>
+                                <th class="del"><img src="../../img/icon/icon_delete.png"></th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="cont-bottom">
+                    <div class="btn-area">
+                        <button type="button" class="btn-mid gray_bg" layer-name="">취소</button>
+                        <button type="button" class="btn-mid pink_bg">확인</button>
+                    </div>
+                </div>
+
+                <!--비밀번호 오류 M_login_03-1-->
+
+                <div class="popwrap">
+                    <div class="popup modal" id="modalpop">
+                        <div class="pop-con">
+                            <span class="alert"></span>
+                                <p class="sub-txt">
+                                비밀번호가 일치하지 않습니다.<br>
+                                다시 입력해 주세요.
+                                </p>
+                            <div class="btn-area">
+                                <button type="button" class="btn-large pink_bg exit"><a href="../../html/login/M__login_03-1.html">확인</a></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--바이오인증 M_login_04-1-->
+
+                <div class="popwrap">
+                    <div class="popup modal" id="modalpop2">
+                        <div class="pop-con">
+                            <span class="alert"></span>
+                                <p class="sub-txt">
+                                빠른 로그인을 위해<br>
+                                바이오인증을 사용하시겠습니까?
+                                </p>
+                            <div class="btn-area">
+                                <button type="button" class="btn-mid gray_bg exit"><a href="../../html/login/M__login_03-1.html">취소</a></button>
+                                <button type="button" class="btn-mid pink_bg">확인</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

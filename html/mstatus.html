@@ -1,0 +1,346 @@
+<html lang="ko"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>mstatus</title>
+	<style>
+		@font-face {
+		font-family:noto;
+		font-style:normal;
+		font-weight:300;
+		src: url('font/noto-sans-regular.eot');
+		src: local(''),
+		url('font/noto-sans-regular.eot?#iefix') format('embedded-opentype'),
+		url('font/noto-sans-regular.woff2') format('woff2'),
+		url('font/noto-sans-regular.woff') format('woff')
+	}
+
+	@font-face {
+		font-family:noto;
+		font-style:normal;
+		font-weight:500;
+		src: url('font/noto-sans-medium.eot');
+		src: local(''),
+		url('font/noto-sans-medium.eot?#iefix') format('embedded-opentype'),
+		url('font/noto-sans-medium.woff2') format('woff2'),
+		url('font/noto-sans-medium.woff') format('woff')
+	}
+
+		* {box-sizing:border-box;}
+		h1, h2, h3, div, span, a, button, dl, table, select, input {font-family:noto, sans-serif;font-weight:300;}
+		html {overflow-y:scroll;padding-top:78px;font-size:62.5%;}
+		body, h1, h2, dl, dd {margin:0;}
+		body, h1, h2, div, a, span, em, dl, button, th, td, input[type=text], select {color:#666;font-size:1.3rem;font-weight:300;line-height:1.5;}
+		select, input[type=text] {height:34px;box-sizing:border-box;border-radius:0;border:1px solid rgba(0,0,0,.3);text-align:left;vertical-align:middle;outline:0;transition:all .3s ease-in;}
+		select:focus, input[type=text]:focus {border:1px solid red;background-color:#e4f6fd;}
+		input[type=text] {padding:0 1.4rem;vertical-align:middle;}
+		.placeholder {color:#999;}
+		:-ms-input-placeholder {color:#999;}
+		::-webkit-input-placeholder {color:#999;}
+		::-moz-placeholder{color:#999;}
+		button {border:0;background-color:transparent;border-radius:0;text-align:left;}
+		body {padding:0 2px 50px;}
+		.hide {display:none;}
+
+		header {position:fixed;top:0;right:0;left:0;z-index:50;padding:2rem 4rem;background-color:rgba(255,255,255,.9);transition:all .1s ease-in;}
+		header.scrl {background-color:rgba(209,234,245,.9);padding-top:.5rem;padding-bottom:.5rem;border-bottom:1px solid #ccc;box-shadow:0 1px 6px rgba(0,0,0,.2);transition:all .3s ease-in;}
+		header.scrl > dl {display:none;}
+		header:after {content:'';display:block;clear:both;}
+		header h1 {float:left;color:#000;font-size:2rem;font-weight:500;text-shadow:2px 2px 3px rgba(0,0,0,.2);line-height:3.4rem;}
+		header > dl {overflow:hidden;float:left;margin-left:1rem;line-height:3.4rem;}
+		header > dl dt {float:left;margin-left:1rem;}
+		header > dl dd + dt {position:relative;padding-left:1.1rem;}
+		header > dl dd + dt:before {content:'';position:absolute;top:50%;left:0;transform:translateY(-50%);width:1px;height:10px;background-color:#ddd;}
+		header > dl dd {float:left;margin-left:.8rem;}
+		header .rt-area {overflow:hidden;float:right;}
+		header .rt-area dl {overflow:hidden;float:left;line-height:3.4rem;}
+		header .rt-area dl dt {float:left;margin-right:.4rem;font-weight:500;}
+		header .rt-area dl dd {float:left;margin-left:.4rem;}
+		header .rt-area dl dd select,
+		header .rt-area dl dd input {vertical-align:top;}
+		header .len {float:left;margin-left:1rem;line-height:3.4rem;}
+		section {margin-top:3px;}
+		section h2 {position:relative;padding:0 1rem;border-top:1px solid #ccc;border-bottom:1px solid #ccc;background-color:#ddd;color:#000;font-size:1.4rem;font-weight:500;line-height:3.4rem;}
+		section table {margin-bottom:-4px;}
+		table {width:100%;table-layout:fixed;border-collapse:collapse;border-right:1px solid #ddd;}
+		table tr:hover td {background-color:#f0ffff;transition:background-color .3s ease-in;}
+		table th,
+		table td {padding:.5rem 1rem;border-left:1px solid #ddd;border-bottom:1px solid #ddd;}
+		table th {background-color:#eee;}
+		table td a {display:block;color:#2277ee;outline:0;}
+		table td a:focus {background-color:#e4f6fd;color:red;}
+		.right {text-align:right;}
+		.stat,
+		.date {text-align:center;}
+		.contextmenu {display:none;position:fixed;top:50%;left:50%;z-index:100;padding:10px 0;background-color:rgba(0,0,0,.7);border:1px solid #000;box-shadow:2px 2px 6px rgba(0,0,0,.8);}
+		.contextmenu button {display:block;width:100%;padding:5px 40px 5px 20px;color:#fff;outline:0;}
+		.contextmenu button:hover {background-color:rgba(127,154,224,.6);}
+	</style>
+</head>
+
+<body>
+<header>
+	<h1>U+ 웹팩스 (Mobile)</h1>
+	<dl>
+		<dt>시작일 : </dt>
+		<dd class="date-start"> 2021-09-01</dd>
+		<dt>완료일 :</dt>
+		<dd class="date-end"></dd>
+		<dt>상태 :</dt>
+		<dd>완료(☆ : <span class="starBefore">0</span>) / 검수완료(★ : <span class="starAfter">0</span>)</dd>
+	</dl>
+	
+</header>
+
+<!-- 가이드 -->
+<section>
+	<h2>가이드<span style="position: absolute; top: 50%; right: 1rem; transform: translateY(-50%);">(0/1)</span></h2>
+	<table class=""><colgroup><col style="width:12%;"><col style="width:12%;"><col style="width:12%;"><col style="width:12%;"><col style="width:8%;"><col><col style="width:50px;"><col style="width:100px;"><col style="width:16%;"></colgroup><thead><tr><th scope="col">2depth</th><th scope="col">3depth</th><th scope="col">4depth</th><th scope="col">5depth</th><th scope="col">path</th><th scope="col">file</th><th scope="col">stat</th><th scope="col">date</th><th scope="col">note</th></tr></thead>
+		<tbody>
+			<tr>
+				<td>가이드</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td class="right">guide/</td>
+				<td class="right"><a target="_blank" href="guide/mguide.html">mguide.html</a></td>
+				<td class="stat"></td>
+				<td class="date"></td>
+				<td></td>
+			</tr>			
+		</tbody>
+	</table>
+</section>
+
+<!-- 팩스 -->
+<section>
+	<h2>모바일 팩스<span style="position: absolute; top: 50%; right: 1rem; transform: translateY(-50%);">(0/2)</span></h2>
+	<table class=""><colgroup><col style="width:12%;"><col style="width:12%;"><col style="width:12%;"><col style="width:12%;"><col style="width:8%;"><col><col style="width:50px;"><col style="width:100px;"><col style="width:16%;"></colgroup><thead><tr><th scope="col">2depth</th><th scope="col">3depth</th><th scope="col">4depth</th><th scope="col">5depth</th><th scope="col">path</th><th scope="col">file</th><th scope="col">stat</th><th scope="col">date</th><th scope="col">note</th></tr></thead>
+		<tbody>
+			<tr>
+				<td>로그인</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td class="right">login/</td>
+				<td class="right"><a target="_blank" href="login/M__splash_01.html">M__splash_01.html</a></td>
+				<td class="stat"></td>
+				<td class="date">2021-09-06</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>로그인</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td class="right">login/</td>
+				<td class="right"><a target="_blank" href="login/M__splash_02-1.html">M__splash_02-1.html</a></td>
+				<td class="stat"></td>
+				<td class="date">2021-09-06</td>
+				<td>
+					
+				</td>
+			</tr>
+			<tr>
+				<td>로그인</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td class="right">login/</td>
+				<td class="right"><a target="_blank" href="login/M__splash_02-2.html">M__splash_02-2.html</a></td>
+				<td class="stat"></td>
+				<td class="date">2021-09-07</td>
+				<td>
+					
+				</td>
+			</tr>
+			<tr>
+				<td>로그인</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td class="right">login/</td>
+				<td class="right"><a target="_blank" href="login/M__splash_03.html">M__splash_03.html</a></td>
+				<td class="stat"></td>
+				<td class="date">2021-09-08</td>
+				<td>
+					
+				</td>
+			</tr>
+			<tr>
+				<td>로그인</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td class="right">login/</td>
+				<td class="right"><a target="_blank" href="login/M__login_01.html">M__login_01.html</a></td>
+				<td class="stat"></td>
+				<td class="date">2021-09-09</td>
+				<td>
+					
+				</td>
+			</tr>
+			<tr>
+				<td>로그인</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td class="right">login/</td>
+				<td class="right"><a target="_blank" href="login/M__login_02.html">M__login_02.html</a></td>
+				<td class="stat"></td>
+				<td class="date">2021-09-09</td>
+				<td>
+					M__login_02-1, M__login_02-2 문구 포함
+				</td>
+			</tr>
+			<tr>
+				<td>로그인</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td class="right">login/</td>
+				<td class="right"><a target="_blank" href="login/M__login_02-3.html">M__login_02-3.html</a></td>
+				<td class="stat"></td>
+				<td class="date">2021-09-07</td>
+				<td>
+					
+				</td>
+			</tr>
+			<tr>
+				<td>로그인</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td class="right">login/</td>
+				<td class="right"><a target="_blank" href="login/M__login_03.html">M__login_03.html</a></td>
+				<td class="stat"></td>
+				<td class="date">2021-09-09</td>
+				<td>
+					
+				</td>
+			</tr>
+			<tr>
+				<td>로그인</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td class="right">login/</td>
+				<td class="right"><a target="_blank" href="login/M__login_03-1.html">M__login_03-1.html</a></td>
+				<td class="stat"></td>
+				<td class="date">2021-09-09</td>
+				<td>
+					
+				</td>
+			</tr>
+			<tr>
+				<td>로그인</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td class="right">login/</td>
+				<td class="right"><a target="_blank" href="login/M__login_04-2.html">M__login_04-2.html</a></td>
+				<td class="stat"></td>
+				<td class="date">2021-09-09</td>
+				<td>
+					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</section>
+
+
+
+<script src="../js/jquery-3.3.1.js"></script>
+<script>
+$(window).on('load', function(){
+	/* 테이블정의 */
+	$('table').each(function(){
+		var tbl = '';
+		tbl += '<colgroup>';
+		tbl += '<col style="width:12%;">';//2depth
+		tbl += '<col style="width:12%;">';//3depth
+		tbl += '<col style="width:12%;">';//4depth
+		tbl += '<col style="width:12%;">';//5depth
+		tbl += '<col style="width:8%;">';//path
+		tbl += '<col>';                           //file
+		tbl += '<col style="width:50px;">';//stat
+		tbl += '<col style="width:100px;">';//date
+		tbl += '<col style="width:16%;">';//note
+		tbl += '</colgroup>';
+
+		tbl += '<thead><tr>';
+		tbl += '<th scope="col">2depth</th>';
+		tbl += '<th scope="col">3depth</th>';
+		tbl += '<th scope="col">4depth</th>';
+		tbl += '<th scope="col">5depth</th>';
+		tbl += '<th scope="col">path</th>';
+		tbl += '<th scope="col">file</th>';
+		tbl += '<th scope="col">stat</th>';
+		tbl += '<th scope="col">date</th>';
+		tbl += '<th scope="col">note</th>';
+		tbl += '</tr></thead>';
+		$(this).prepend(tbl);
+	});
+
+	/* 재미 */
+	$('h1').css({'transform':'scale(1.5) translateX(10%)', 'opacity':'.1', 'transition':'all 60s'});
+	$(document).on({
+		'mouseenter':function(){
+			$('h1').removeAttr('style').css({'transition':'all .2s ease-in'});
+		},
+		'mouseleave':function(){
+			$('h1').css({'transform':'scale(1.5) translateX(10%)', 'opacity':'.1', 'transition':'all 60s'});
+		}
+	});
+
+	/* 작업일자 */
+	$('table .date').each(function(){
+		if($(this).text().length == 0){
+			$(this).removeClass('date');
+		}
+	});
+
+	/* 작업공수 */
+	$('header .starBefore').each(function(){
+		var before = $('td.stat:contains("☆")').length;
+		$(this).text(before);
+	});
+	$('header .starAfter').each(function(){
+		var after = $('td.stat:contains("★")').length;
+		$(this).text(after);
+	});
+	$('header .len').each(function(){
+		var all = $('tbody tr').length;
+		var len = $('td.stat').text().length;
+		$(this).find('span').text(len);
+		$(this).find('.all').text(all);
+	});
+
+	/* 뎁스구분 */
+	$('section h2').each(function(){
+		var txt = $(this).text();
+		$('header select').append('<option>' + txt + '</option>');
+
+		var all = $(this).closest('section').find('tbody tr').length;
+		var len = $(this).closest('section').find('td.stat').text().length;
+		$(this).append('<span>(' + len + '/' + all + ')</span>');
+		$(this).find('span').css({
+			'position':'absolute',
+			'top':'50%',
+			'right':'1rem',
+			'transform':'translateY(-50%)'
+		});
+	});
+
+	/* 테이블토글 */
+	$(document).on('click', 'section h2', function(){
+		$(this).closest('section').find('table').toggleClass('hide');
+	});
+
+});
+
+
+</script>
+
+
+</body></html>

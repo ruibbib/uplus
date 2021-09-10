@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>LG U+ 웹팩스</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!--공통-->
+    <link rel="stylesheet" type="text/css" href="../../css/common.css">
+    
+</head>
+<body>
+    <div class="wrap">
+        <header class="wfmheader">
+
+        </header>
+        <div class="container" style="position: absolute; left:20px; top:20px;">
+            <div class="cont-wrap">
+                <section class="guide">
+                    <h1>모바일 가이드</h1>
+                    <h2>버튼</h2>
+                      <div class="cont">
+                        <div class="sub_cont">
+                            <p class="tit">full</p>
+                            <button type="button" class="btn-full pink_bg">다음</button>
+                        </div>
+                        <div class="sub_cont">
+                            <p class="tit">large</p>
+                            <button type="button" class="btn-large pink_bg">확인</button>
+                        </div>
+                        <div class="sub_cont">
+                            <p class="tit">large shadow</p>
+                            <button type="button" class="btn-large p_shadow pink_bg">로그인</button>
+                        </div>
+                        <div class="sub_cont">
+                            <p class="tit">large mid</p>
+                            <button type="button" class="btn-lmid gray_bg">취소</button>
+                            <button type="button" class="btn-lmid pink_bg">확인</button>
+                        </div>
+                        <div class="sub_cont">
+                            <p class="tit">mid</p>
+                            <button type="button" class="btn-mid gray_bg">취소</button>
+                            <button type="button" class="btn-mid pink_bg">확인</button>
+                        </div>
+                      </div>
+                </section>
+                <section class="guide">
+                    <h2>폼요소</h2>
+                    <div class="cont">
+                        <div class="sub_cont">
+                            <p class="tit">체크박스</p>
+                            <div class="cont">
+                                <!-- 라디오 -->
+                                <span class="chkbox">
+                                    <input type="checkbox" class="styled" checked="">
+                                    <span class="chk"></span>
+                                </span>
+                                <!--<span class="chkbox"><input type="radio" name="Rdo" class="styled"><span class="chk"></span></span>
+                                <span class="chkbox"><input type="radio" class="styled" disabled=""><span class="chk"></span></span>
+                                <span class="chkbox"><input type="radio" class="styled" disabled="" checked=""><span class="chk"></span></span> -->
+                                <span class="chkbox">
+                                    <input type="checkbox" class="styled" checked="">
+                                    <span class="chk"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="sub_cont">
+                            <p class="tit">라디오</p>
+                            <div class="cont">
+                                <span class="chkbox"><input type="radio" name="Rdo" class="styled" checked=""><span class="chk2"></span></span>
+                                <!--<span class="chkbox"><input type="radio" name="Rdo" class="styled"><span class="chk2"></span></span>
+                                <span class="chkbox"><input type="radio" class="styled" disabled=""><span class="chk2"></span></span>
+                                <span class="chkbox"><input type="radio" class="styled" disabled="" checked=""><span class="chk2"></span></span> -->
+            
+                                <span class="chkbox">
+                                    <input type="radio" name="Rdo" class="styled" checked="">
+                                    <span class="chk2"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="sub_cont">
+                            <p class="tit">토글바</p>
+                            <div class="cont">
+                                <input type="checkbox" name="toggle" class="styletg" id="toggle">
+                            </div>
+                        </div>
+                        <div class="sub_cont">
+                            <p class="tit">셀렉트박스</p>
+                            <div class="cont">
+                                <span class="select-box wide">
+                                    <select class="styled">
+                                        <option value="">option 01</option>
+                                        <option value="">option 02</option>
+                                        <option value="">option 03</option>
+                                        <option value="">option 04</option>
+                                        <option value="">직접입력</option>
+                                    </select>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    </section>
+                    <section class="guide">
+                        <h2>alert팝업</h2>
+                        <div class="cont">
+                            <div class="sub-cont">
+                                
+                                <div class="cont">
+                                    <button class="btnPop" title="Popup01">팝업 01</button>
+                                    <button class="btnPop" title="Popup02">팝업 02</button>
+                
+                                    <!-- Popup01 -->
+                                    <div class="layer-popup" title="Popup01">
+                                        <div class="popup">
+                                            <button class="btn-close popClose">팝업닫기</button>
+                
+                                            <button class="popClose">팝업닫기</button>
+                                        </div>
+                                    </div>
+                
+                                    <!-- Popup02 -->
+                                    <div class="layer-popup" title="Popup02">
+                                        <div class="popup">
+                                            <button class="btn-close popClose">팝업닫기</button>
+                
+                                            <button class="btnPop" title="Popup01">팝업 01</button>
+                                            <button class="popClose">팝업닫기</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>		
+                    </section>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
